@@ -23,3 +23,4 @@ Solutions Added
 - Day 10: [Cathode-Ray Tube](./010/)
 - Day 11: [Monkey in the Middle](./011/)
 - Day 12: [Hill Climbing Algorithm](./012/)
+- Day 13: [Distress Signal](./013/)
