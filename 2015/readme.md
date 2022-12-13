@@ -12,3 +12,4 @@ Solutions Added
 ---------------
 
 - Day 1: [Not Quite Lisp](./001/)
+- Day 2: [I Was Told There Would Be No Math](./002/)
