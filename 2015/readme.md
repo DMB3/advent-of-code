@@ -14,3 +14,4 @@ Solutions Added
 - Day 1: [Not Quite Lisp](./001/)
 - Day 2: [I Was Told There Would Be No Math](./002/)
 - Day 3: [Perfectly Spherical Houses in a Vacuum](./003/)
+- Day 4: [The Ideal Stocking Stuffer](./004/)
