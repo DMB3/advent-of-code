@@ -247,7 +247,8 @@ class Tree(object):
         for y in range(self.row + 1, len(self.trees)):
             tree = self.trees[y][self.column]
             if tree.height >= self.height:
-                # print("\t", self.column, self.row, "can finally bottom see", self.column, y, "with height", tree.height)
+                # print("\t", self.column, self.row, "can finally bottom see", self.column, y, "with height",
+                # tree.height)
                 return score + 1
 
             # print("\t", self.column, self.row, "can bottom see", self.column, y, "with height", tree.height)
@@ -479,3 +480,155 @@ class Monkey(object):
             raise ValueError("Unknown operator %s" % (operator,))
 
         item.value = new_value
+
+
+class IntoTheAbyss(Exception): pass
+
+
+class NowhereToDrop(Exception): pass
+
+
+class Cave(object):
+    def __init__(self):
+        self.contents = {}
+        self.bounds = None
+
+        self.__sand_generator = None
+
+    def __update_bounds(self, x, y):
+        if self.bounds is None:
+            self.bounds = (x, y, x, y)
+        else:
+            self.bounds = (
+                min(x, self.bounds[0]),
+                min(y, self.bounds[1]),
+                max(x, self.bounds[2]),
+                max(y, self.bounds[3])
+            )
+
+    @property
+    def sand_generator(self):
+        if self.__sand_generator is not None:
+            return self.__sand_generator
+
+        for x in self.contents:
+            for y in self.contents[x]:
+                if isinstance(self.contents[x][y], CaveSandGenerator):
+                    self.__sand_generator = self.contents[x][y]
+                    return self.__sand_generator
+
+        return None
+
+    def add(self, x, y, object_class):
+        if x not in self.contents:
+            self.contents[x] = {}
+
+        instance = object_class(self, x, y)
+        self.contents[x][y] = instance
+        self.__update_bounds(x, y)
+
+        return instance
+
+    def set(self, x, y, instance):
+        self.contents[x][y] = instance
+
+        return instance
+
+    def object_at(self, x, y):
+        if x not in self.contents:
+            return None
+        if y not in self.contents[x]:
+            return None
+
+        return self.contents[x][y]
+
+    def out_of_bounds(self, x, y):
+        x0, y0, x1, y1 = self.bounds
+        return x < x0 or x > x1 or y < y0 or y > y1
+
+    def __repr__(self):
+        result = ""
+
+        for y in range(self.bounds[1], self.bounds[3] + 1):
+            line = ""
+            for x in range(self.bounds[0], self.bounds[2] + 1):
+                line = "%s%s" % (line, self.contents[x][y])
+            result = "%s%s\n" % (result, line)
+
+        return result
+
+
+class CaveObject(object):
+    def __init__(self, cave, x, y):
+        self.cave = cave
+        self.x = x
+        self.y = y
+
+    def drop_coordinates(self):
+        possibilities = [
+            (self.x, self.y + 1),
+            (self.x - 1, self.y + 1),
+            (self.x + 1, self.y + 1)
+        ]
+
+        for possibility in possibilities:
+            x, y = possibility
+            if isinstance(self.cave.object_at(x, y), CaveAir):
+                return x, y
+            if self.cave.out_of_bounds(x, y):
+                raise IntoTheAbyss()
+
+        return None
+
+
+class CaveSandGenerator(CaveObject):
+    def __init__(self, cave, x, y):
+        CaveObject.__init__(self, cave, x, y)
+
+    def __repr__(self):
+        return "+"
+
+    def generate(self):
+        result = self.drop_coordinates()
+        if result is None:
+            raise NowhereToDrop()
+
+        x, y = result
+        sand = self.cave.add(x, y, CaveSand)
+        sand.drop()
+
+
+class CaveAir(CaveObject):
+    def __init__(self, cave, x, y):
+        CaveObject.__init__(self, cave, x, y)
+
+    def __repr__(self):
+        return "."
+
+
+class CaveRock(CaveObject):
+    def __init__(self, cave, x, y):
+        CaveObject.__init__(self, cave, x, y)
+
+    def __repr__(self):
+        return "#"
+
+
+class CaveSand(CaveObject):
+    def __init__(self, cave, x, y):
+        CaveObject.__init__(self, cave, x, y)
+
+    def __repr__(self):
+        return "o"
+
+    def drop(self):
+        coordinates = self.drop_coordinates()
+        while coordinates is not None:
+            x, y = coordinates
+
+            self.cave.add(self.x, self.y, CaveAir)
+
+            self.x, self.y = x, y
+            self.cave.set(x, y, self)
+
+            coordinates = self.drop_coordinates()

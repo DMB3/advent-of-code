@@ -24,3 +24,4 @@ Solutions Added
 - Day 11: [Monkey in the Middle](./011/)
 - Day 12: [Hill Climbing Algorithm](./012/)
 - Day 13: [Distress Signal](./013/)
+- Day 14: [Regolith Reservoir](./014/)
