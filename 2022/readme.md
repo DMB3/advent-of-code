@@ -25,3 +25,4 @@ Solutions Added
 - Day 12: [Hill Climbing Algorithm](./012/)
 - Day 13: [Distress Signal](./013/)
 - Day 14: [Regolith Reservoir](./014/)
+- Day 15: [Beacon Exclusion Zone](./015/)

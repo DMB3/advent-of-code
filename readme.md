@@ -15,4 +15,4 @@ Years Added
 - [2019](./2019/) 2 out of 50 stars collected
 - [2020](./2020/) 4 out of 50 stars collected
 - [2021](./2021/) 34 out of 50 stars collected
-- [2022](./2022/) 28 out of 50 stars collected
+- [2022](./2022/) 30 out of 50 stars collected
