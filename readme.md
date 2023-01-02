@@ -9,7 +9,7 @@ Years Added
 -----------
 
 - [2015](./2015/) 10 out of 50 stars collected
-- [2016](./2016/) 2 out of 50 stars collected
+- [2016](./2016/) 4 out of 50 stars collected
 - [2017](./2017/) 2 out of 50 stars collected
 - [2018](./2018/) 2 out of 50 stars collected
 - [2019](./2019/) 2 out of 50 stars collected
