@@ -13,3 +13,4 @@ Solutions Added
 
 - Day 1: [No Time for a Taxicab](./001/)
 - Day 2: [Bathroom Security](./002/)
+- Day 3: [Squares With Three Sides](./003/)
