@@ -15,3 +15,4 @@ Solutions Added
 - Day 2: [Bathroom Security](./002/)
 - Day 3: [Squares With Three Sides](./003/)
 - Day 4: [Security Through Obscurity](./004/)
+- Day 5: [How About a Nice Game of Chess?](./005/)
