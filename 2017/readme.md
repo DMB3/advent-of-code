@@ -12,3 +12,4 @@ Solutions Added
 ---------------
 
 - Day 1: [Inverse Captcha](./001/)
+- Day 2: [Corruption Checksum](./002/)
