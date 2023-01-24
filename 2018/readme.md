@@ -12,3 +12,4 @@ Solutions Added
 ---------------
 
 - Day 1: [Chronal Calibration](./001/)
+- Day 2: [Inventory Management System](./002/)
