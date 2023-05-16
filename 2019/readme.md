@@ -12,3 +12,4 @@ Solutions Added
 ---------------
 
 - Day 1: [The Tyranny of the Rocket Equation](./001/)
+- Day 2: [1202 Program Alarm](./002/)
