@@ -12,3 +12,4 @@ Solutions Added
 ---------------
 
 - Day 1: [Trebuchet?!](./001/)
+- Day 2: [Cube Conundrum](./002/)
