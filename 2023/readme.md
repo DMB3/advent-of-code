@@ -14,3 +14,4 @@ Solutions Added
 - Day 1: [Trebuchet?!](./001/)
 - Day 2: [Cube Conundrum](./002/)
 - Day 3: [Gear Ratios](./003/)
+- Day 4: [Scratchcards](./004/)
