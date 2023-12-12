@@ -16,3 +16,4 @@ Solutions Added
 - Day 3: [Gear Ratios](./003/)
 - Day 4: [Scratchcards](./004/)
 - Day 5: [If You Give A Seed A Fertilizer](./005/)
+- Day 6: [Wait For It](./006/)
