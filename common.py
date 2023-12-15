@@ -1,4 +1,5 @@
 import os
+from collections import Counter
 
 inputs = [os.path.join("inputs", "example_input.txt"),
           os.path.join("inputs", "real_input.txt")]
@@ -11,6 +12,124 @@ def read_file(filename, strip_lines=True):
                 line = line.strip()
 
             yield line
+
+
+def get_with_value(dictionary, value, excluding=None):
+    for key in dictionary:
+        if dictionary[key] == value and (excluding is None or value not in excluding):
+            return key
+
+    return None
+
+
+class CamelCard(object):
+    def __init__(self, value):
+        self.value = value
+
+    def __repr__(self):
+        return self.value
+
+
+class CamelHand(object):
+    def __init__(self, cards, bid):
+        self.cards = cards
+        self.bid = bid
+
+        self.__card_values = [str(x) for x in [2, 3, 4, 5, 6, 7, 8, 9, "T", "J", "Q", "K", "A"]]
+        self.__combination_name = None
+        self.__combination_rank = None
+        self.__hand_value = None
+
+    def __lt__(self, other):
+        if not isinstance(other, CamelHand):
+            raise ValueError("Can only compare camel hands with camel hands")
+
+        if self.combination_rank < other.combination_rank:
+            return True
+        elif self.combination_rank == other.combination_rank:
+            if self.hand_value < other.hand_value:
+                return True
+
+        return False
+
+    def __gt__(self, other):
+        if not isinstance(other, CamelHand):
+            raise ValueError("Can only compare camel hands with camel hands")
+
+        if self.combination_rank > other.combination_rank:
+            return True
+        elif self.combination_rank == other.combination_rank:
+            if self.hand_value > other.__hand_value:
+                return True
+
+        return False
+
+    def __evaluate_hand(self):
+        counts = Counter([card.value for card in self.cards])
+        keys = list(counts.keys())
+
+        if len(counts) == 1:
+            # this is five of a kind
+            self.__combination_name = "5-of-a-kind"
+            self.__combination_rank = 7
+        elif len(counts) == 2:
+            # this is either four of a kind or a full house
+            first, second = keys
+            if counts[first] == 4 or counts[second] == 4:
+                self.__combination_name = "4-of-a-kind"
+                self.__combination_rank = 6
+            else:
+                self.__combination_name = "full-house"
+                self.__combination_rank = 5
+        elif len(counts) == 3:
+            # this is either three of a kind or two pair
+            first, second, third = keys
+            if counts[first] == 3 or counts[second] == 3 or counts[third] == 3:
+                self.__combination_name = "3-of-a-kind"
+                self.__combination_rank = 4
+            else:
+                self.__combination_name = "two-pair"
+                self.__combination_rank = 3
+        elif len(counts) == 4:
+            # this is a pair
+            self.__combination_name = "pair"
+            self.__combination_rank = 2
+        else:
+            self.__combination_name = "high-card"
+            self.__combination_rank = 1
+
+        self.__hand_value = []
+        for card in self.cards:
+            self.__hand_value.append(self.__card_values.index(card.value) + 1)
+
+    @property
+    def combination_name(self):
+        if self.__combination_name is None:
+            self.__evaluate_hand()
+
+        return self.__combination_name
+
+    @property
+    def combination_rank(self):
+        if self.__combination_rank is None:
+            self.__evaluate_hand()
+
+        return self.__combination_rank
+
+    @property
+    def hand_value(self):
+        if self.__hand_value is None:
+            self.__evaluate_hand()
+
+        return self.__hand_value
+
+    def __repr__(self):
+        return "(%s - %s, rank %d, value %s)" % (
+            self.cards,
+            self.combination_name,
+            self.combination_rank,
+            self.hand_value
+        )
 
 
 class FilesystemObject(object):
