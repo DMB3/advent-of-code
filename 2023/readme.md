@@ -18,3 +18,4 @@ Solutions Added
 - Day 5: [If You Give A Seed A Fertilizer](./005/)
 - Day 6: [Wait For It](./006/)
 - Day 7: [Camel Cards](./007/)
+- Day 8: [Haunted Wasteland](./008/)
