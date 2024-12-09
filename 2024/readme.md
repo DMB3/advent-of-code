@@ -10,3 +10,5 @@ Merry Christmas :)
 
 Solutions Added
 ---------------
+
+- Day 1: [Historian Hysteria](./001/)
