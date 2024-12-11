@@ -13,3 +13,4 @@ Solutions Added
 
 - Day 1: [Historian Hysteria](./001/)
 - Day 2: [Red-Nosed Reports](./002/)
+- Day 3: [Mull It Over](./003/)
