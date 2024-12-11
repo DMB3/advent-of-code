@@ -15,3 +15,4 @@ Solutions Added
 - Day 2: [Red-Nosed Reports](./002/)
 - Day 3: [Mull It Over](./003/)
 - Day 4: [Ceres Search](./004/)
+- Day 5: [Print Queue](./005/)
