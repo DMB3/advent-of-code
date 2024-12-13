@@ -16,3 +16,4 @@ Solutions Added
 - Day 3: [Mull It Over](./003/)
 - Day 4: [Ceres Search](./004/)
 - Day 5: [Print Queue](./005/)
+- Day 6: [Guard Gallivant](./006/)
