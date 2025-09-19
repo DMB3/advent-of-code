@@ -18,3 +18,7 @@ class PartTwoTest {
         }
     }
 }
+
+/*
+6
+ */

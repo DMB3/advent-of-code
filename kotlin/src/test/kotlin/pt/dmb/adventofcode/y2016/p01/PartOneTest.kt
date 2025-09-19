@@ -18,3 +18,10 @@ class PartOneTest {
         }
     }
 }
+
+/*
+Ended at (2, -3) which is 5 away
+Ended at (0, 2) which is 2 away
+Ended at (10, -2) which is 12 away
+Ended at (4, -4) which is 8 away
+ */

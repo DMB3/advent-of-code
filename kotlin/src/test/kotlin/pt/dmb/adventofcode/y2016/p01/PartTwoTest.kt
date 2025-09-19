@@ -18,3 +18,11 @@ class PartTwoTest {
         }
     }
 }
+
+/*
+R2, L3
+R2, R2, R2
+R5, L5, R5, R3
+R8, R4, R4, R8
+Repeated at (4, 0) which is 4 steps away
+ */

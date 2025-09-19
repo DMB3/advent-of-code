@@ -18,3 +18,7 @@ class PartOneTest {
         }
     }
 }
+
+/*
+3 real checksums for a total sector sum of 1514
+ */
