@@ -10,9 +10,6 @@ class PartTwoTest {
 
         Utilities.readInputFile(2016, 5).forEach { line ->
             val partOne = PartOne()
-            line.toCharArray().forEach { char ->
-                // TODO
-            }
 
             TODO()
         }
