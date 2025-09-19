@@ -22,10 +22,11 @@ class PartTwoTest {
         }
 
         assertEquals(
-            allResults, listOf(
+            allResults,
+            listOf(
                 "abcdef 6742839 000000072a1e4320d13deee9d934ae29",
                 "pqrstuv 5714438 000000c76bdbbb114044ada5ad14523b",
-            )
+            ),
         )
     }
 }

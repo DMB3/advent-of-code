@@ -18,7 +18,8 @@ class PartOneTest {
         }
 
         assertEquals(
-            allResults, listOf(
+            allResults,
+            listOf(
                 0,
                 0,
                 3,
@@ -30,7 +31,7 @@ class PartOneTest {
                 -3,
                 -1,
                 -1,
-            )
+            ),
         )
     }
 }

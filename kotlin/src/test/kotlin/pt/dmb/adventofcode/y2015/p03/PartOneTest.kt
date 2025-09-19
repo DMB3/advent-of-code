@@ -20,12 +20,13 @@ class PartOneTest {
         }
 
         assertEquals(
-            allResults, listOf(
+            allResults,
+            listOf(
                 2,
                 4,
                 2,
                 2,
-            )
+            ),
         )
     }
 }

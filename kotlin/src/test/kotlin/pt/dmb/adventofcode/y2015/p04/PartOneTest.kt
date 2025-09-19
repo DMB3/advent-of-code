@@ -22,10 +22,11 @@ class PartOneTest {
         }
 
         assertEquals(
-            allResults, listOf(
+            allResults,
+            listOf(
                 "abcdef 609043 000001dbbfa3a5c83a2d506429c7b00e",
                 "pqrstuv 1048970 000006136ef2ff3b291c85725f17325c",
-            )
+            ),
         )
     }
 }

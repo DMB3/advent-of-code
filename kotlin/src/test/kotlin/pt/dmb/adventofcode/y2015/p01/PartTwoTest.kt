@@ -20,7 +20,8 @@ class PartTwoTest {
         }
 
         assertEquals(
-            allResults, listOf(
+            allResults,
+            listOf(
                 1,
                 3,
                 1,
@@ -28,7 +29,7 @@ class PartTwoTest {
                 1,
                 1,
                 5,
-            )
+            ),
         )
     }
 }
