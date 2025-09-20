@@ -2,91 +2,91 @@ package pt.dmb.adventofcode.y2016.p02
 
 import pt.dmb.adventofcode.common.Utilities
 
-class PartTwo
+class PartTwo {
+    private val keypad = mapOf(
+        "1" to mapOf(
+            "D" to "3",
+        ),
+        "2" to mapOf(
+            "D" to "6",
+            "R" to "3",
+        ),
+        "3" to mapOf(
+            "U" to "1",
+            "D" to "7",
+            "L" to "2",
+            "R" to "4",
+        ),
+        "4" to mapOf(
+            "D" to "8",
+            "L" to "3",
+        ),
+        "5" to mapOf(
+            "R" to "6",
+        ),
+        "6" to mapOf(
+            "U" to "2",
+            "D" to "A",
+            "L" to "5",
+            "R" to "7",
+        ),
+        "7" to mapOf(
+            "U" to "3",
+            "D" to "B",
+            "L" to "6",
+            "R" to "8",
+        ),
+        "8" to mapOf(
+            "U" to "4",
+            "D" to "C",
+            "L" to "7",
+            "R" to "9",
+        ),
+        "9" to mapOf(
+            "L" to "8",
+        ),
+        "A" to mapOf(
+            "U" to "6",
+            "R" to "B",
+        ),
+        "B" to mapOf(
+            "U" to "7",
+            "D" to "D",
+            "L" to "A",
+            "R" to "C",
+        ),
+        "C" to mapOf(
+            "U" to "8",
+            "L" to "B",
+        ),
+        "D" to mapOf(
+            "U" to "B",
+        ),
+    )
+    private var currentKey = "5"
+    private var code = ""
 
-fun main() {
-    Utilities.readInputFile(2016, 2, scope = "main").forEach { line ->
-        val solver = PartTwo()
-        TODO()
+    fun readInstruction(instruction: Char) {
+        currentKey = keypad[currentKey]!!.getOrDefault(instruction.toString(), currentKey)
     }
+
+    fun updateCode() {
+        code += currentKey
+    }
+
+    fun code() = code
 }
 
-/*
-import common
+fun main() {
+    val solver = PartTwo()
 
-if __name__ == "__main__":
-    keypad = {
-        "1": {
-            "D": "3"
-        },
-        "2": {
-            "D": "6",
-            "R": "3"
-        },
-        "3": {
-            "U": "1",
-            "D": "7",
-            "L": "2",
-            "R": "4"
-        },
-        "4": {
-            "D": "8",
-            "L": "3"
-        },
-        "5": {
-            "R": "6"
-        },
-        "6": {
-            "U": "2",
-            "D": "A",
-            "L": "5",
-            "R": "7"
-        },
-        "7": {
-            "U": "3",
-            "D": "B",
-            "L": "6",
-            "R": "8"
-        },
-        "8": {
-            "U": "4",
-            "D": "C",
-            "L": "7",
-            "R": "9"
-        },
-        "9": {
-            "L": "8"
-        },
-        "A": {
-            "U": "6",
-            "R": "B"
-        },
-        "B": {
-            "U": "7",
-            "D": "D",
-            "L": "A",
-            "R":"C"
-        },
-        "C": {
-            "U": "8",
-            "L": "B",
-        },
-        "D": {
-            "U": "B"
+    Utilities.readInputFile(2016, 2, scope = "main").forEach { line ->
+        line.forEach { instruction ->
+            solver.readInstruction(instruction)
         }
+
+        solver.updateCode()
     }
 
-    for input_file in common.inputs:
-        current_key = "5"
-        code = ""
-
-        for line in common.read_file(input_file):
-            for instruction in line:
-                current_key = keypad.get(current_key).get(instruction, current_key)
-
-            code += current_key
-
-        print(code)
-
-D65C3
- */
+    println(solver.code())
+}

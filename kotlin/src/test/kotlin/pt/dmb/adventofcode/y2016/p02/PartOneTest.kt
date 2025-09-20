@@ -2,20 +2,21 @@ package pt.dmb.adventofcode.y2016.p02
 
 import org.junit.jupiter.api.Test
 import pt.dmb.adventofcode.common.Utilities
+import kotlin.test.assertEquals
 
 class PartOneTest {
     @Test
     fun `Should return correct solution`() {
-        val allResults = mutableListOf<Int>()
+        val partOne = PartOne()
 
         Utilities.readInputFile(2016, 2).forEach { line ->
-            val partOne = PartOne()
+            line.forEach { instruction ->
+                partOne.readInstruction(instruction)
+            }
 
-            TODO()
+            partOne.updateCode()
         }
+
+        assertEquals("1985", partOne.code())
     }
 }
-
-/*
-1985
- */
