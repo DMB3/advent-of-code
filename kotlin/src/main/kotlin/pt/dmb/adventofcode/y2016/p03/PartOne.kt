@@ -2,30 +2,30 @@ package pt.dmb.adventofcode.y2016.p03
 
 import pt.dmb.adventofcode.common.Utilities
 
-class PartOne
+class PartOne {
+    private var possibles = 0
 
-fun main() {
-    Utilities.readInputFile(2016, 3, scope = "main").forEach { line ->
-        val solver = PartOne()
-        TODO()
+    fun increaseIfNeeded(one: Int, two: Int, three: Int) {
+        if ((one < two + three) && (two < one + three) && (three < one + two)) {
+            possibles++
+        }
     }
+
+    fun possibles() = possibles
 }
 
-/*
-import common
+fun main() {
+    val solver = PartOne()
 
-if __name__ == "__main__":
-    for input_file in common.inputs:
-        possibles = 0
+    Utilities.readInputFile(2016, 3, scope = "main").forEach { line ->
+        val splitLine = line.trim().split("\\s+".toRegex())
 
-        for line in common.read_file(input_file):
-            one, two, three = line.split()
-            if int(one) < int(two) + int(three) and \
-                    int(two) < int(one) + int(three) and \
-                    int(three) < int(one) + int(two):
-                possibles += 1
+        val one = splitLine[0].toInt()
+        val two = splitLine[1].toInt()
+        val three = splitLine[2].toInt()
 
-        print(possibles)
+        solver.increaseIfNeeded(one, two, three)
+    }
 
-1032
- */
+    println(solver.possibles())
+}

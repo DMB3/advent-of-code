@@ -2,36 +2,49 @@ package pt.dmb.adventofcode.y2016.p03
 
 import pt.dmb.adventofcode.common.Utilities
 
-class PartTwo
+class PartTwo {
+    private var possibles = 0
+    private val lines = mutableListOf<List<Int>>()
 
-fun main() {
-    Utilities.readInputFile(2016, 3, scope = "main").forEach { line ->
-        val solver = PartTwo()
-        TODO()
+    fun addLine(one: Int, two: Int, three: Int) {
+        lines.add(listOf(one, two, three))
+    }
+
+    fun increaseIfNeeded(one: Int, two: Int, three: Int) {
+        if ((one < two + three) && (two < one + three) && (three < one + two)) {
+            possibles++
+        }
+    }
+
+    fun possibles() = possibles
+
+    fun lines(): List<List<List<Int>>> {
+        return lines.chunked(3)
     }
 }
 
-/*
-import common
+fun main() {
+    val solver = PartTwo()
 
-if __name__ == "__main__":
-    for input_file in common.inputs:
-        possibles = 0
-        lines = []
+    Utilities.readInputFile(2016, 3, scope = "main").forEach { line ->
+        val splitLine = line.trim().split("\\s+".toRegex())
 
-        for line in common.read_file(input_file):
-            one, two, three = line.split()
-            lines.append([int(one), int(two), int(three)])
+        val one = splitLine[0].toInt()
+        val two = splitLine[1].toInt()
+        val three = splitLine[2].toInt()
 
-        for line_one, line_two, line_three in zip(*[iter(lines)] * 3):
-            for index in range(3):
-                one, two, three = int(line_one[index]), int(line_two[index]), int(line_three[index])
-                if int(one) < int(two) + int(three) and \
-                        int(two) < int(one) + int(three) and \
-                        int(three) < int(one) + int(two):
-                    possibles += 1
+        solver.addLine(one, two, three)
+    }
 
-        print(possibles)
+    solver.lines().forEach { it ->
+        for (index in 0..2) {
+            val one = it[0][index]
+            val two = it[1][index]
+            val three = it[2][index]
 
-1838
- */
+            solver.increaseIfNeeded(one, two, three)
+        }
+    }
+
+    println(solver.possibles())
+}
