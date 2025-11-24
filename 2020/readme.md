@@ -13,3 +13,4 @@ Solutions Added
 
 - Day 1: [Report Repair](./001/)
 - Day 2: [Password Philosophy](./002/)
+- Day 3: [Toboggan Trajectory](./003/)
