@@ -30,12 +30,11 @@ if __name__ == "__main__":
         zero_times = 0
         dial = Dial()
 
-        with open(input_file) as fin:
-            for line in fin.readlines():
-                direction, amount = line[0], int(line[1:].strip())
-                dial.rotate(direction, amount)
+        for line in common.read_file(input_file):
+            direction, amount = line[0], int(line[1:].strip())
+            dial.rotate(direction, amount)
 
-                if dial.value == 0:
-                    zero_times += 1
+            if dial.value == 0:
+                zero_times += 1
 
         print(zero_times)

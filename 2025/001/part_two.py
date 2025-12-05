@@ -36,9 +36,8 @@ if __name__ == "__main__":
         print(input_file)
         dial = Dial()
 
-        with open(input_file) as fin:
-            for line in fin.readlines():
-                direction, amount = line[0], int(line[1:].strip())
-                dial.rotate(direction, amount)
+        for line in common.read_file(input_file):
+            direction, amount = line[0], int(line[1:].strip())
+            dial.rotate(direction, amount)
 
         print(dial.zero_count)
