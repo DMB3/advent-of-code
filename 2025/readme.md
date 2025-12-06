@@ -13,3 +13,4 @@ Solutions Added
 
 - Day 1: [Historian Hysteria](./001/)
 - Day 2: [Gift Shop](./002/)
+- Day 3: [Lobby](./003/)
