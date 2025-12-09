@@ -15,3 +15,4 @@ Solutions Added
 - Day 2: [Gift Shop](./002/)
 - Day 3: [Lobby](./003/)
 - Day 4: [Printing Department](./004/)
+- Day 5: [Cafeteria](./005/)
